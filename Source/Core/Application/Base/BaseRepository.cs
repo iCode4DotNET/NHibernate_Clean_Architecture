@@ -23,6 +23,11 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
         return _session.Get<T>(id);
     }
 
+    public T Get(byte id)
+    {
+        return _session.Get<T>(id);
+    }
+
     public IQueryable<T> GetAll()
     {
         return _session.Query<T>();

@@ -38,4 +38,11 @@ public interface IBaseRepository<T> where T : BaseEntity
     /// <returns></returns>
     T Get(int id);
 
+    /// <summary>
+    /// واکشی رکورد مورد نظر
+    /// </summary>
+    /// <param name="id">شناسه جدول</param>
+    /// <returns></returns>
+    T Get(byte id);
+
 }

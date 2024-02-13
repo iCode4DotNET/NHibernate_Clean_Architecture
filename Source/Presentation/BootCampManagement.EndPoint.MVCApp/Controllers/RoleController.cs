@@ -1,6 +1,8 @@
 ﻿using Domain.Contract.Base;
 using Domain.Concrete.Schema.HR;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers
 {
@@ -16,8 +18,33 @@ namespace BootCampManagement.EndPoint.MVCApp.Controllers
 
         public JsonResult Get(int id)
         {
-            var role = _unitOfWork.RoleRepository.Get(id);
-            return Json(role);
+            var role = _unitOfWork.RoleRepository.Get((byte)id);
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true,
+            };
+
+            return Json(role, options);
+        }
+
+        public JsonResult GetPeople(int id)
+        {
+            var role = _unitOfWork.RoleRepository.Get((byte)id);
+
+            if (role is null)
+            {
+                return Json(BadRequest("شناسه مورد نظر معتبر نمیباشد"));
+            }
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true,
+            };
+
+            return Json(role.PersonList, options);
         }
 
         public IActionResult Create()
