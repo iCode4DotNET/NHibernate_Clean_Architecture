@@ -2,13 +2,11 @@
 using Application.Base;
 using Domain.Concrete.Schema.HR;
 using Domain.Contract.Schema.HR;
-
 namespace Application.Schema.HR;
 
-
-public class PersonRepository : BaseRepository<Person>, IPersonRepository
+public class CompanyRepository : BaseRepository<Company>, ICompanyRepository
 {
-    public PersonRepository(ISession session) : base(session)
+    public CompanyRepository(ISession session) : base(session)
     {
     }
 }

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Domain"
+				   namespace="Domain.Concrete.Schema.HR" >
+
+	<joined-subclass name="Company" table="Company" extends="Actor" lazy="false">
+		<key column="ID"/>
+
+		<property name="Title" type="String" not-null="true" length="50">
+			<column name="Title" not-null="true" length="50" sql-type="nvarchar"/>
+		</property>
+
+		<property name="RegisterNo" type="String" not-null="true" length="50">
+			<column name="RegisterNo" not-null="true" length="50" sql-type="nvarchar"/>
+		</property>
+
+		<property name="RegisterDate" type="DateTime" not-null="true">
+			<column name="RegisterDate" not-null="true" sql-type="date"/>
+		</property>
+
+	</joined-subclass>
+</hibernate-mapping>

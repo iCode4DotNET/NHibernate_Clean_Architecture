@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Mapping\HR\Actor.hbm.xml" />
+    <None Remove="Mapping\HR\Company.hbm.xml" />
     <None Remove="Mapping\HR\Person.hbm.xml" />
     <None Remove="Mapping\HR\Role.hbm.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Mapping\HR\Company.hbm.xml" />
+    <EmbeddedResource Include="Mapping\HR\Actor.hbm.xml" />
     <EmbeddedResource Include="Mapping\HR\Person.hbm.xml" />
     <EmbeddedResource Include="Mapping\HR\Role.hbm.xml" />
   </ItemGroup>

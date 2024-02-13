@@ -25,6 +25,9 @@ public class UnitOfWork : IUnitOfWork
 
     private IRoleRepository _roleRepository = null!;
     private IPersonRepository _personRepository = null!;
+    private IActorRepository _actorRepository = null!;
+    private ICompanyRepository _companyRepository = null!;
+
 
     public IPersonRepository PersonRepository
     {
@@ -34,6 +37,25 @@ public class UnitOfWork : IUnitOfWork
             return _personRepository;
         }
     }
+
+    public IActorRepository ActorRepository
+    {
+        get
+        {
+            _actorRepository ??= new ActorRepository(_session);
+            return _actorRepository;
+        }
+    }
+
+    public ICompanyRepository CompanyRepository
+    {
+        get
+        {
+            _companyRepository ??= new CompanyRepository(_session);
+            return _companyRepository;
+        }
+    }
+
 
     public IRoleRepository RoleRepository
     {

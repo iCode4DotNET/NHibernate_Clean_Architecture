@@ -3,7 +3,7 @@ using Domain.Contract.Base;
 
 namespace Domain.Contract.Schema.HR;
 
-public interface IPersonRepository : IBaseRepository<Person>
+public interface IActorRepository : IBaseRepository<Actor>
 {
 
 }

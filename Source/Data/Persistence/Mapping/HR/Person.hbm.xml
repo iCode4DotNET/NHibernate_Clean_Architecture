@@ -3,7 +3,7 @@
 				   assembly="Domain"
 				   namespace="Domain.Concrete.Schema.HR" >
 
-<class name="Person" table="Person" schema="dbo">
+<!--<class name="Person" table="Person" schema="dbo">
     <id name="ID" type="int">
       <column name="ID" not-null="true" sql-type="int" />
 		<generator class="identity"/>
@@ -17,10 +17,37 @@
 		<column name="LastName" not-null="true" length="50" sql-type="nvarchar"/>
 	</property>
 
+	<property name="FullName" formula="FirstName + ' ' + LastName" access="readonly" insert="false" update="false"/>
+
 	<many-to-one name="RoleObject" class="Role">
 		<column name="RoleCode" not-null="false" sql-type="tinyint" />
 	</many-to-one>
 	
-  </class>
-	
+  </class>-->
+
+
+	<joined-subclass name="Person" table="Person" schema="dbo" extends="Actor">
+		<key column="ID" />
+
+		<property name="FirstName" type="String" not-null="true" length="50">
+			<column name="FirstName" not-null="true" length="50" sql-type="nvarchar"/>
+		</property>
+
+		<property name="LastName" type="String" not-null="true" length="50">
+			<column name="LastName" not-null="true" length="50" sql-type="nvarchar"/>
+		</property>
+
+		<property name="BirthDate" type="DateTime" not-null="true" length="50">
+			<column name="BirthDate" not-null="true"  sql-type="date"/>
+		</property>
+
+
+		<property name="FullName" formula="FirstName + ' ' + LastName" access="readonly" insert="false" update="false"/>
+
+		<many-to-one name="RoleObject" class="Role">
+			<column name="RoleCode" not-null="false" sql-type="tinyint" />
+		</many-to-one>
+		
+		
+	</joined-subclass>	
 </hibernate-mapping>

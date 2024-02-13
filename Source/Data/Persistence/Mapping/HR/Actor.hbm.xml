@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Domain"
+				   namespace="Domain.Concrete.Schema.HR" >
+
+<class name="Actor" table="Actor" schema="dbo">
+    <id name="ID" type="int">
+      <column name="ID" not-null="true" sql-type="int" />
+		<generator class="identity"/>
+    </id>
+	
+    <property name="Address" type="String" not-null="true" length="50">
+      <column name="Address" not-null="true" length="50" sql-type="nvarchar"/>
+    </property>
+
+	<property name="Telephone" type="String" not-null="true" length="50">
+		<column name="Telephone" not-null="true" length="50" sql-type="nvarchar"/>
+	</property>
+
+	<property name="Mobile" type="String" not-null="true" length="50">
+		<column name="Mobile" not-null="true" length="50" sql-type="nvarchar"/>
+	</property>
+
+  </class>
+	
+</hibernate-mapping>
