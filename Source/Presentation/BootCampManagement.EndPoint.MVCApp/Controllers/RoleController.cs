@@ -3,6 +3,7 @@ using Domain.Concrete.Schema.HR;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Data;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers
 {
@@ -13,6 +14,19 @@ namespace BootCampManagement.EndPoint.MVCApp.Controllers
         public JsonResult Index()
         {
             var roles = _unitOfWork.RoleRepository.GetAll();
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true,
+            };
+
+            return Json(roles, options);
+        }
+
+        public JsonResult Index2()
+        {
+            var roles = _unitOfWork.RoleRepository.GetRoleViewModels();
             return Json(roles);
         }
 

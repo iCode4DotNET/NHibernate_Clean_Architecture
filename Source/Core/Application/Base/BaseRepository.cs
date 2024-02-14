@@ -6,7 +6,8 @@ namespace Application.Base;
 
 public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 {
-    private readonly NH.ISession _session;
+    //private readonly NH.ISession _session;
+    protected readonly NH.ISession _session;
 
     public BaseRepository(NH.ISession session)
     {

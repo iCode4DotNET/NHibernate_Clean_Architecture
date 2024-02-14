@@ -21,4 +21,10 @@ public class PersonController(IUnitOfWork unitOfWork) : Controller
 
         return Json(list,options);
     }
+
+    public JsonResult Index2()
+    {
+        var list = _unitOfWork.PersonRepository.GetPersonViewModels();
+        return Json(list);
+    }
 }
