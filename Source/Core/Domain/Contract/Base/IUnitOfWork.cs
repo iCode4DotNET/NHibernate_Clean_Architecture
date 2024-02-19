@@ -1,11 +1,11 @@
-﻿using Domain.Contract.Schema.HR;
+﻿//using Domain.Contract.Schema.HR;
 
-namespace Domain.Contract.Base;
+//namespace Domain.Contract.Base;
 
-public interface IUnitOfWork : IDisposable
-{
-    void Commit();
-    void RollBack();
-    IRoleRepository RoleRepository { get; }
-    IPersonRepository PersonRepository { get; }
-}
+//public interface IUnitOfWork : IDisposable
+//{
+//    void Commit();
+//    void RollBack();
+//    IRoleRepository RoleRepository { get; }
+//    IPersonRepository PersonRepository { get; }
+//}

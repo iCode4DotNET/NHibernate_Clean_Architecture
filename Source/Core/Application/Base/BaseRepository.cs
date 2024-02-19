@@ -1,6 +1,6 @@
-﻿using Domain.Concrete.Base;
-using Domain.Contract.Base;
-using NH = NHibernate;
+﻿using NH = NHibernate;
+using Application.Contract.Base;
+using Domain.Concrete.Base;
 using ViewModels.Schema.HR;
 
 namespace Application.Base;

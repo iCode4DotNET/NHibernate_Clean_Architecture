@@ -1,4 +1,4 @@
-﻿using Domain.Contract.Base;
+﻿using Application.Contract.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers;

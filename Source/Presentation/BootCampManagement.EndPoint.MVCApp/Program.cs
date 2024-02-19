@@ -1,7 +1,6 @@
-
 using Application.Base;
+using Application.Contract.Base;
 using BootCampManagement.EndPoint.MVCApp.Infra;
-using Domain.Contract.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +12,7 @@ var connection = "data source=.;initial catalog=NHExample; user id = sa ; passwo
 builder.Services.AddNHibernate(connection);
 
 
-builder.Services.AddTransient<IUnitOfWork,UnitOfWork>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 
 var app = builder.Build();

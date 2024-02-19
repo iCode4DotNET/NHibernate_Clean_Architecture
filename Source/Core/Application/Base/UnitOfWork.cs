@@ -1,7 +1,7 @@
-﻿using NHibernate;
-using Domain.Contract.Base;
-using Domain.Contract.Schema.HR;
+﻿using Application.Contract.Base;
+using Application.Contract.Schema.HR;
 using Application.Schema.HR;
+using NHibernate;
 
 namespace Application.Base;
 

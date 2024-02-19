@@ -1,8 +1,8 @@
 ﻿using NHibernate;
 using Application.Base;
 using Domain.Concrete.Schema.HR;
-using Domain.Contract.Schema.HR;
 using ViewModels.Schema.HR;
+using Application.Contract.Schema.HR;
 
 namespace Application.Schema.HR;
 
@@ -22,7 +22,7 @@ public class PersonRepository : BaseIDRepository<Person, PersonViewModel>, IPers
             FullName = x.FullName,
             Mobile = x.Mobile,
             RoleTitle = x.RoleObject.Title,
-            RoleCode  = x.RoleObject.Code,
+            RoleCode = x.RoleObject.Code,
         }).ToList();
 
         return people;

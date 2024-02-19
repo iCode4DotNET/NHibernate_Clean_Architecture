@@ -1,8 +1,9 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Application.Contract.Base;
 using Domain.Concrete.Schema.HR;
-using Domain.Contract.Base;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using ViewModels.Schema.HR;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers
 {
@@ -80,6 +81,32 @@ namespace BootCampManagement.EndPoint.MVCApp.Controllers
 
             _unitOfWork.Commit();
 
+
+            return Ok();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(RoleViewModel roleViewModel)
+        {
+
+            #region [ Via Explicit Convert ]
+
+            var roleobj = _unitOfWork.RoleRepository.ToEntity(roleViewModel);
+
+            _unitOfWork.RoleRepository.Insert(roleobj);
+
+            #endregion
+
+
+            #region [ Via Implicit Convert ]
+
+            _unitOfWork.RoleRepository.Insert(roleViewModel);
+
+            #endregion
+
+
+            _unitOfWork.Commit();
 
             return Ok();
         }

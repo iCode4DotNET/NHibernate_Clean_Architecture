@@ -1,7 +1,7 @@
-﻿using Domain.Contract.Base;
+﻿using Application.Contract.Base;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers;
 
@@ -19,7 +19,7 @@ public class PersonController(IUnitOfWork unitOfWork) : Controller
             WriteIndented = true,
         };
 
-        return Json(list,options);
+        return Json(list, options);
     }
 
     public JsonResult Index2()

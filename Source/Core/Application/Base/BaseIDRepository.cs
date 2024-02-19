@@ -1,6 +1,6 @@
 ﻿using NHibernate;
+using Application.Contract.Base;
 using Domain.Concrete.Base;
-using Domain.Contract.Base;
 using ViewModels.Schema.HR;
 
 namespace Application.Base;
