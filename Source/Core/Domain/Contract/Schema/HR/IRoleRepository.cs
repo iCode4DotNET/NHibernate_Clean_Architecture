@@ -4,7 +4,7 @@ using ViewModels.Schema.HR;
 
 namespace Domain.Contract.Schema.HR;
 
-public interface IRoleRepository : IBaseRepository<Role>
+public interface IRoleRepository : IBaseCodeRepository<Role, RoleViewModel>
 {
-    List<RoleViewModel> GetRoleViewModels();
+
 }

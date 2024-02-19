@@ -7,22 +7,39 @@ using ViewModels.Schema.HR;
 namespace Application.Schema.HR;
 
 
-public class PersonRepository : BaseRepository<Person>, IPersonRepository
+public class PersonRepository : BaseIDRepository<Person, PersonViewModel>, IPersonRepository
 {
     public PersonRepository(ISession session) : base(session)
     {
     }
 
-    public List<PersonViewModel> GetPersonViewModels()
+
+    public override List<PersonViewModel> GetViewModels()
     {
         var people = _session.Query<Person>().Select(x => new PersonViewModel
         {
-            ID = x.ID,
+            Id = x.ID,
             FullName = x.FullName,
             Mobile = x.Mobile,
-            RoleTitle = x.RoleObject.Title
+            RoleTitle = x.RoleObject.Title,
+            RoleCode  = x.RoleObject.Code,
         }).ToList();
 
-        return people;  
+        return people;
+    }
+
+    public override bool IsValid(Person entity)
+    {
+        return entity.ID > 0;
+    }
+
+    public override Person ToEntity(PersonViewModel model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override PersonViewModel ToViewModel(Person entity)
+    {
+        throw new NotImplementedException();
     }
 }

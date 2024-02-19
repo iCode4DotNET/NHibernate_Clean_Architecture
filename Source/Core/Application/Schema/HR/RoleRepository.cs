@@ -6,22 +6,50 @@ using ViewModels.Schema.HR;
 
 namespace Application.Schema.HR;
 
-public class RoleRepository : BaseRepository<Role>, IRoleRepository
+public class RoleRepository : BaseCodeRepository<Role, RoleViewModel>, IRoleRepository
 {
     public RoleRepository(ISession session) : base(session)
     {
     }
 
-    public List<RoleViewModel> GetRoleViewModels()
+    public override byte GetNextValue()
     {
-        var result = _session.Query<Role>().ToList();
+        var max = _session.Query<Role>().Max(x => x.Code);
+        max++;
+        return max;
+    }
 
-        var res2 = result.Select(x => new RoleViewModel
-         {
-             Code = x.Code,
-             Title = x.Title,
-         }).ToList();
+    public override List<RoleViewModel> GetViewModels()
+    {
+        var result = _session.Query<Role>().Select(x => new RoleViewModel
+        {
+            Title = x.Title,
+            Id = x.Code,
+        }).ToList();
 
-        return res2;
+        return result;
+    }
+
+    public override bool IsValid(Role entity)
+    {
+        return entity.Code > 0;
+    }
+
+    public override Role ToEntity(RoleViewModel model)
+    {
+        return new Role
+        {
+            Title = model.Title,
+            Code = (byte)model.Id,
+        };
+    }
+
+    public override RoleViewModel ToViewModel(Role entity)
+    {
+        return new RoleViewModel
+        {
+            Title = entity.Title,
+            Id = entity.Code
+        };
     }
 }

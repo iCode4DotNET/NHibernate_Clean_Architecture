@@ -1,12 +1,13 @@
-﻿using NH = NHibernate;
-using Domain.Concrete.Base;
+﻿using Domain.Concrete.Base;
 using Domain.Contract.Base;
+using NH = NHibernate;
+using ViewModels.Schema.HR;
 
 namespace Application.Base;
 
-public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
+public abstract class BaseRepository<T, TViewModel> : IBaseRepository<T, TViewModel> where T : BaseEntity
+                                                                                      where TViewModel : IBaseViewModel
 {
-    //private readonly NH.ISession _session;
     protected readonly NH.ISession _session;
 
     public BaseRepository(NH.ISession session)
@@ -19,16 +20,6 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
         _session.Delete(entity);
     }
 
-    public T Get(int id)
-    {
-        return _session.Get<T>(id);
-    }
-
-    public T Get(byte id)
-    {
-        return _session.Get<T>(id);
-    }
-
     public IQueryable<T> GetAll()
     {
         return _session.Query<T>();
@@ -39,8 +30,15 @@ public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntit
         _session.Save(entity);
     }
 
+
     public void Update(T entity)
     {
         _session.Update(entity);
     }
+
+    public abstract bool IsValid(T entity);
+    public abstract TViewModel ToViewModel(T entity);
+    public abstract T ToEntity(TViewModel model);
+    public abstract List<TViewModel> GetViewModels();
+
 }

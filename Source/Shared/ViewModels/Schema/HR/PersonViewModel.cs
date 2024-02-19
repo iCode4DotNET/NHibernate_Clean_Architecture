@@ -1,6 +1,7 @@
 ﻿namespace ViewModels.Schema.HR;
 
-public class PersonViewModel
+
+public class PersonViewModel : IBaseViewModel
 {
     public PersonViewModel()
     {
@@ -9,13 +10,15 @@ public class PersonViewModel
         Mobile = string.Empty;
     }
 
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string FullName { get; set; }
     public string RoleTitle { get; set; }
+    public byte RoleCode { get; set; }
+
     public string Mobile { get; set; }
 
     public override string ToString()
     {
-        return $"{ID} {FullName} {RoleTitle} {Mobile}";
+        return $"{Id} {FullName} {RoleTitle} {Mobile}";
     }
 }

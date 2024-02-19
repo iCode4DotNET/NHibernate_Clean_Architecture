@@ -1,9 +1,8 @@
-﻿using Domain.Contract.Base;
-using Domain.Concrete.Schema.HR;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.Data;
+using Microsoft.AspNetCore.Mvc;
+using Domain.Concrete.Schema.HR;
+using Domain.Contract.Base;
 
 namespace BootCampManagement.EndPoint.MVCApp.Controllers
 {
@@ -26,13 +25,13 @@ namespace BootCampManagement.EndPoint.MVCApp.Controllers
 
         public JsonResult Index2()
         {
-            var roles = _unitOfWork.RoleRepository.GetRoleViewModels();
+            var roles = _unitOfWork.RoleRepository.GetViewModels();
             return Json(roles);
         }
 
-        public JsonResult Get(int id)
+        public JsonResult Get(byte id)
         {
-            var role = _unitOfWork.RoleRepository.Get((byte)id);
+            var role = _unitOfWork.RoleRepository.GetByCode(id);
 
             JsonSerializerOptions options = new()
             {
@@ -43,9 +42,9 @@ namespace BootCampManagement.EndPoint.MVCApp.Controllers
             return Json(role, options);
         }
 
-        public JsonResult GetPeople(int id)
+        public JsonResult GetPeople(byte id)
         {
-            var role = _unitOfWork.RoleRepository.Get((byte)id);
+            var role = _unitOfWork.RoleRepository.GetByCode(id);
 
             if (role is null)
             {

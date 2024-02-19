@@ -24,7 +24,7 @@ public class PersonController(IUnitOfWork unitOfWork) : Controller
 
     public JsonResult Index2()
     {
-        var list = _unitOfWork.PersonRepository.GetPersonViewModels();
+        var list = _unitOfWork.PersonRepository.GetViewModels();
         return Json(list);
     }
 }

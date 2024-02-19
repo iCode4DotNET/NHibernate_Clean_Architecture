@@ -4,7 +4,7 @@ using ViewModels.Schema.HR;
 
 namespace Domain.Contract.Schema.HR;
 
-public interface IPersonRepository : IBaseRepository<Person>
+public interface IPersonRepository : IBaseIDRepository<Person, PersonViewModel>
 {
-    List<PersonViewModel> GetPersonViewModels();
+
 }
