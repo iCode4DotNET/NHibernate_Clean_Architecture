@@ -38,6 +38,9 @@ public class RoleViewModel : IBaseViewModel
     #region [ Properties ]
     public string Title { get; set; }
     public int Id { get; set; }
+
+    public int RowIndex { get; set; }
+
     #endregion
 
     #region [ Override Methods ]
@@ -45,11 +48,19 @@ public class RoleViewModel : IBaseViewModel
     {
         return $"{Id} {Title}";
     }
+
+    public bool IsValid()
+    {
+        throw new NotImplementedException();
+    }
+
+
+
     #endregion
 
 
     #region [ Just 4 Review and Compare 2 Implicit Casting : Operator Overloading  ]
-   
+
     public static RoleViewModel operator +(RoleViewModel R1, RoleViewModel R2)
     {
         return new RoleViewModel()
@@ -67,7 +78,7 @@ public class RoleViewModel : IBaseViewModel
     public static bool operator !=(RoleViewModel R1, RoleViewModel R2)
     {
         return R1.Id != R2.Id || R1.Title != R2.Title;
-    } 
+    }
 
     #endregion
 

@@ -24,4 +24,26 @@ public abstract class BaseCodeRepository<T, TViewModel> : BaseRepository<T, TVie
     /// </summary>
     public abstract byte GetNextValue();
 
+
+    public byte GetNextVal()
+    {
+        byte result = 0;
+
+        NextValAttribute? att = (NextValAttribute?)Attribute.GetCustomAttribute(typeof(T), typeof(NextValAttribute)) ??
+            throw new Exception("The sequence attribute was not found.");
+
+        var select = $"SELECT MAX(Code) FROM {att.Schema}.{att.Table}";
+
+        var res = _session.CreateSQLQuery(select).List();
+
+        var maxCode = res[0];
+
+        if (maxCode is not null)
+            result = (byte)((byte)maxCode + 1);
+        else result = 1;
+
+        return result;
+        
+    }
+
 }

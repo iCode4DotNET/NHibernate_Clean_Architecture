@@ -11,9 +11,17 @@
     <None Remove="Mapping\HR\Company.hbm.xml" />
     <None Remove="Mapping\HR\Person.hbm.xml" />
     <None Remove="Mapping\HR\Role.hbm.xml" />
+    <None Remove="Mapping\HR\Shift.hbm.xml" />
+    <None Remove="Mapping\HR\USP_Actor_SelectAll.hbm.xml" />
+    <None Remove="Mapping\HR\USP_Actor_SelectByDate.hbm.xml" />
+    <None Remove="Mapping\HR\VWAllActor.hbm.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Mapping\HR\Shift.hbm.xml" />
+    <EmbeddedResource Include="Mapping\HR\USP_Actor_SelectByDate.hbm.xml" />
+    <EmbeddedResource Include="Mapping\HR\USP_Actor_SelectAll.hbm.xml" />
+    <EmbeddedResource Include="Mapping\HR\VWAllActor.hbm.xml" />
     <EmbeddedResource Include="Mapping\HR\Company.hbm.xml" />
     <EmbeddedResource Include="Mapping\HR\Actor.hbm.xml" />
     <EmbeddedResource Include="Mapping\HR\Person.hbm.xml" />

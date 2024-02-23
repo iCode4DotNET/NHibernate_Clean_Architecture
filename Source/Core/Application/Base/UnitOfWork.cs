@@ -25,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
 
     private IRoleRepository _roleRepository = null!;
     private IPersonRepository _personRepository = null!;
+    private IShiftRepository _shiftRepository = null!;
 
 
 
@@ -43,6 +44,15 @@ public class UnitOfWork : IUnitOfWork
         {
             _roleRepository ??= new RoleRepository(_session);
             return _roleRepository;
+        }
+    }
+
+    public IShiftRepository ShiftRepository
+    {
+        get
+        {
+            _shiftRepository ??= new ShiftRepository(_session);
+            return _shiftRepository;
         }
     }
 

@@ -30,8 +30,9 @@ public class RoleRepository : BaseCodeRepository<Role, RoleViewModel>, IRoleRepo
         return result;
     }
 
-    public override bool IsValid(Role entity)
+    public override bool IsViewModelValid(Role entity)
     {
+        // query to DB to check validate !!
         return entity.Code > 0;
     }
 
@@ -51,5 +52,40 @@ public class RoleRepository : BaseCodeRepository<Role, RoleViewModel>, IRoleRepo
             Title = entity.Title,
             Id = entity.Code
         };
+    }
+}
+
+
+
+public class ShiftRepository : BaseCodeRepository<Shift, ShiftViewModel>, IShiftRepository
+{
+    public ShiftRepository(ISession session) : base(session)
+    {
+
+    }
+
+    public override byte GetNextValue()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override List<ShiftViewModel> GetViewModels()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool IsViewModelValid(Shift entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Shift ToEntity(ShiftViewModel model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override ShiftViewModel ToViewModel(Shift entity)
+    {
+        throw new NotImplementedException();
     }
 }

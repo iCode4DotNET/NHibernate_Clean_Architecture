@@ -15,6 +15,11 @@ public class Actor : BaseEntity
     public virtual string Address { get; set; }
     public virtual string Telephone { get; set; }
     public virtual string Mobile { get; set; }
+
+    public override bool IsEntityValid()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

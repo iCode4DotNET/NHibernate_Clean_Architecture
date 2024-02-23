@@ -9,5 +9,5 @@ public interface IUnitOfWork : IDisposable
     void RollBack();
     IRoleRepository RoleRepository { get; }
     IPersonRepository PersonRepository { get; }
-   
+    IShiftRepository ShiftRepository { get; }
 }

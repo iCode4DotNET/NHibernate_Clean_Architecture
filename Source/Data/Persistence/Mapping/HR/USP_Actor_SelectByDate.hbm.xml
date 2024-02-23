@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Domain"
+				   namespace="Domain.Concrete.Schema.HR" >
+
+<sql-query name="usp_actor_selectByDate">
+		<return class="VW_AllActor" />
+	exec dbo.usp_actor_selectByDate :DateFrom, :DateTo
+</sql-query>
+
+</hibernate-mapping>

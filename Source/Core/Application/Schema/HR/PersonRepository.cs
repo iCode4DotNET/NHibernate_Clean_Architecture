@@ -23,12 +23,17 @@ public class PersonRepository : BaseIDRepository<Person, PersonViewModel>, IPers
             Mobile = x.Mobile,
             RoleTitle = x.RoleObject.Title,
             RoleCode = x.RoleObject.Code,
-        }).ToList();
+        }).OrderBy(x => x.Id).ToList();
+
+        for (var i = 0; i < people.Count; i++)
+        {
+            people[i].RowIndex  = i+1 ;
+        }
 
         return people;
     }
 
-    public override bool IsValid(Person entity)
+    public override bool IsViewModelValid(Person entity)
     {
         return entity.ID > 0;
     }
@@ -39,6 +44,39 @@ public class PersonRepository : BaseIDRepository<Person, PersonViewModel>, IPers
     }
 
     public override PersonViewModel ToViewModel(Person entity)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+
+public class OrderRepository : BaseIDRepository<Order, OrderViewModel>, IOrderRepository
+{
+    public OrderRepository(ISession session) : base(session)
+    {
+    }
+
+    public long GetNextVal(OrderViewModel model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override List<OrderViewModel> GetViewModels()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override bool IsViewModelValid(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Order ToEntity(OrderViewModel model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override OrderViewModel ToViewModel(Order entity)
     {
         throw new NotImplementedException();
     }

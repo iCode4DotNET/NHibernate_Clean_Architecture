@@ -36,7 +36,10 @@ public abstract class BaseRepository<T, TViewModel> : IBaseRepository<T, TViewMo
         _session.Update(entity);
     }
 
-    public abstract bool IsValid(T entity);
+    /// <summary>
+    /// جهت آموزش و ملکه ذهن شدن همچین اسمی انتخاب شده است
+    /// </summary>
+    public abstract bool IsViewModelValid(T entity);
     public abstract TViewModel ToViewModel(T entity);
     public abstract T ToEntity(TViewModel model);
     public abstract List<TViewModel> GetViewModels();

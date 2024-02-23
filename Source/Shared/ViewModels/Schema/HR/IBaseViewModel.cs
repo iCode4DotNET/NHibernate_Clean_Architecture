@@ -14,4 +14,11 @@ public interface IBaseViewModel
     /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// شماره ردیف گرید
+    /// </summary>
+    public int RowIndex { get; set; }
+
+    
+
 }

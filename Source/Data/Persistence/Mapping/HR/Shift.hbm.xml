@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Domain"
+				   namespace="Domain.Concrete.Schema.HR" >
+
+	<class name="Shift" table="Shift" schema="dbo">
+		<id name="Code" type="Byte">
+			<column name="Code" not-null="true" sql-type="tinyint" />
+		</id>
+
+		<property name="Title">
+			<column name="Title"/>
+		</property>
+
+		<property name="Start">
+			<column name="StartTime" sql-type="datetime"/>
+		</property>
+
+		<property name="End">
+			<column name="EndTime" sql-type="datetime"/>
+		</property>
+	</class>
+
+</hibernate-mapping>

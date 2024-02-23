@@ -43,6 +43,7 @@ public class PersonViewModel : IBaseViewModel
     public byte RoleCode { get; set; }
 
     public string Mobile { get; set; }
+    public int RowIndex { get; set; }
 
     public override string ToString()
     {

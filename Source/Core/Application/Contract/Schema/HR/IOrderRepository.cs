@@ -4,7 +4,8 @@ using ViewModels.Schema.HR;
 
 namespace Application.Contract.Schema.HR;
 
-public interface IPersonRepository : IBaseIDRepository<Person, PersonViewModel>
+
+public interface IOrderRepository : IBaseIDRepository<Order , OrderViewModel> , IBaseIDCustom<OrderViewModel>
 {
 
 }

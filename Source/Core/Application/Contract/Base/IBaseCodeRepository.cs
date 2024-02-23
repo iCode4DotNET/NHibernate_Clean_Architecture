@@ -8,5 +8,9 @@ public interface IBaseCodeRepository<T, TViewModel> : IBaseRepository<T,TViewMod
 {
     T GetByCode(byte code);
 
-
+    /// <summary>
+    /// بر اساس att  کار میکند
+    /// </summary>
+    /// <returns>ماکس + 1</returns>
+    byte GetNextVal();
 }

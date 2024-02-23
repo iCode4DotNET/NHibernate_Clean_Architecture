@@ -8,4 +8,3 @@ public interface IBaseIDRepository<T, TViewModel> : IBaseRepository<T, TViewMode
 {
     T GetByID(int id);
 }
-

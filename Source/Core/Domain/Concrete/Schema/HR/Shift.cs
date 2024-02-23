@@ -1,31 +1,29 @@
 ﻿using Domain.Concrete.Base;
+using System.Data;
 
 namespace Domain.Concrete.Schema.HR;
 
-/// <summary>
-/// نقش های سیستم
-/// </summary>
-public class Role : BaseEntity
+[NextVal(table: "Shift", schema:"dbo")]
+public class Shift : BaseEntity
 {
-    public Role()
+    public Shift()
     {
         Title = string.Empty;
-        PersonList = [];
     }
 
     public virtual byte Code { get; set; }
     public virtual string Title { get; set; }
-
-    public virtual IList<Person> PersonList { get; set; }
+    public virtual string Start { get; set; }
+    public virtual string End { get; set; }
 
     public override bool IsEntityValid()
     {
-        return Code > 0 && Title is not null;
+        throw new NotImplementedException();
     }
 
     public override string ToString()
     {
-        return $"{Code} {Title}";
+        return $"{Code} {Title} {Start} {End}";
     }
 
 }
